@@ -1,0 +1,70 @@
+{
+  "name": "react-use-observer",
+  "version": "1.0.0",
+  "description": "",
+  "author": "ardaogulcan",
+  "license": "MIT",
+  "repository": "https://github.com/ardaogulcan/react-use-observer",
+  "main": "index.js",
+  "module": "es/index.js",
+  "jsnext:main": "es/index.js",
+  "engines": {
+    "node": ">=8",
+    "npm": ">=5"
+  },
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "start": "chokidar 'src/**/*.js' -c 'yarn build'",
+    "lint": "eslint -c .eslintrc src --ext .jsx --ext .js",
+    "test": "jest",
+    "prebuild": "rimraf dist",
+    "build": "yarn build:cjs && yarn build:es2015",
+    "postbuild": "node scripts/post-build",
+    "build:es2015": "BABEL_ENV=es2015 babel src -d dist/es --ignore '*.test.js'",
+    "build:cjs": "BABEL_ENV=cjs babel src -d dist --ignore '*.test.js'"
+  },
+  "peerDependencies": {
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "@babel/plugin-proposal-export-default-from": "^7.2.0",
+    "@babel/plugin-proposal-export-namespace-from": "^7.2.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.4.4",
+    "@babel/plugin-transform-runtime": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-react": "^7.0.0",
+    "add": "^2.0.6",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^24.8.0",
+    "chokidar-cli": "^1.2.2",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.13.0",
+    "eslint-plugin-react-hooks": "^1.6.0",
+    "fs-extra": "^8.0.1",
+    "gh-pages": "^1.2.0",
+    "glob": "^7.1.4",
+    "jest": "^24.8.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-hooks-testing-library": "^0.5.0",
+    "react-test-renderer": "^16.8.6",
+    "react-testing-library": "^7.0.1",
+    "rimraf": "^2.6.3",
+    "yarn": "^1.16.0"
+  },
+  "dependencies": {
+    "intersection-observer-polyfill": "^0.1.0",
+    "resize-observer-polyfill": "^1.5.1",
+    "use-deep-compare-effect": "^1.2.0"
+  }
+}

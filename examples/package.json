@@ -1,0 +1,20 @@
+{
+  "name": "react-use-observer-example",
+  "homepage": "https://ardaogulcan.github.io/react-use-observer",
+  "version": "0.0.0",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@babel/core": "^7.4.4",
+    "@storybook/addon-actions": "^5.0.11",
+    "@storybook/react": "^5.0.11",
+    "babel-loader": "^8.0.6",
+    "prop-types": "^15.6.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-use-observer": "link:../dist"
+  },
+  "scripts": {
+    "start": "start-storybook"
+  }
+}
