@@ -1,7 +1,7 @@
 {
   "name": "react-use-observer",
   "version": "1.0.0",
-  "description": "",
+  "description": "Performant react hooks for WebApi Observers, useResizeObserver, useInteractionObserver, useMutationObserver",
   "author": "ardaogulcan",
   "license": "MIT",
   "repository": "https://github.com/ardaogulcan/react-use-observer",
@@ -13,9 +13,6 @@
     "npm": ">=5"
   },
   "sideEffects": false,
-  "files": [
-    "dist"
-  ],
   "scripts": {
     "start": "chokidar 'src/**/*.js' -c 'yarn build'",
     "lint": "eslint -c .eslintrc src --ext .jsx --ext .js",
@@ -24,7 +21,9 @@
     "build": "yarn build:cjs && yarn build:es2015",
     "postbuild": "node scripts/post-build",
     "build:es2015": "BABEL_ENV=es2015 babel src -d dist/es --ignore '*.test.js'",
-    "build:cjs": "BABEL_ENV=cjs babel src -d dist --ignore '*.test.js'"
+    "build:cjs": "BABEL_ENV=cjs babel src -d dist --ignore '*.test.js'",
+    "commit": "git-cz",
+    "release": "standard-version"
   },
   "peerDependencies": {
     "react": "^16.8.3",
@@ -39,11 +38,12 @@
     "@babel/plugin-transform-runtime": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
     "@babel/preset-react": "^7.0.0",
-    "add": "^2.0.6",
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.8.0",
     "chokidar-cli": "^1.2.2",
+    "commitizen": "^3.1.1",
+    "cz-conventional-changelog": "2.1.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.17.2",
@@ -51,8 +51,8 @@
     "eslint-plugin-react": "^7.13.0",
     "eslint-plugin-react-hooks": "^1.6.0",
     "fs-extra": "^8.0.1",
-    "gh-pages": "^1.2.0",
     "glob": "^7.1.4",
+    "husky": "^2.3.0",
     "jest": "^24.8.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -60,11 +60,22 @@
     "react-test-renderer": "^16.8.6",
     "react-testing-library": "^7.0.1",
     "rimraf": "^2.6.3",
-    "yarn": "^1.16.0"
+    "standard-version": "^6.0.1"
   },
   "dependencies": {
     "intersection-observer-polyfill": "^0.1.0",
     "resize-observer-polyfill": "^1.5.1",
     "use-deep-compare-effect": "^1.2.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn test && yarn lint",
+      "prepare-commit-msg": "exec < /dev/tty && node_modules/.bin/git-cz --hook"
+    }
   }
 }

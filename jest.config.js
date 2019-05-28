@@ -11,8 +11,10 @@ module.exports = {
     'src/**/*.{js,jsx,mjs}',
   ],
   coverageReporters: [
-    'text',
-    'html',
     'json',
+    'html',
+    'lcov',
+    'text',
+    'clover',
   ],
 }
