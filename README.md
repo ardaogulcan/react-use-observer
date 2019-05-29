@@ -1,6 +1,6 @@
 # react-use-observer
 
-[![Build Status](https://travis-ci.org/ardaogulcan/react-use-observer.svg?branch=master)](https://travis-ci.org/ardaogulcan/react-use-observer) [![NPM](https://img.shields.io/npm/v/react-use-observer.svg)](https://www.npmjs.com/package/react-use-observer) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-airbnb-brightgreen.svg)](https://github.com/airbnb/javascript)
+[![Build Status](https://travis-ci.org/ardaogulcan/react-use-observer.svg?branch=master)](https://travis-ci.org/ardaogulcan/react-use-observer) [![coverage](https://codecov.io/gh/ardaogulcan/react-use-observer/branch/master/graph/badge.svg)](https://codecov.io/gh/ardaogulcan/react-use-observer) [![NPM](https://img.shields.io/npm/v/react-use-observer.svg)](https://www.npmjs.com/package/react-use-observer) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-airbnb-brightgreen.svg)](https://github.com/airbnb/javascript)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 Performant react hooks for WebApi Observers

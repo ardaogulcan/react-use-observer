@@ -1,4 +1,4 @@
-import createObserverPublisher from './createObserverPublisher'
+import createObserverPublisher, { emptyPublisher } from './createObserverPublisher'
 
 // No arrow function because we need constructor
 export const MockObserver = jest.fn(callback => ({
@@ -9,7 +9,7 @@ export const MockObserver = jest.fn(callback => ({
     target: element,
     ...entry,
   }))),
-}));
+}))
 
 beforeEach(() => {
   jest.clearAllMocks()
@@ -79,11 +79,9 @@ describe('Call underlying observers correctly', () => {
 })
 
 describe('Publish changes to the subscribers', () => {
-  it('should return non functional publisher if Observer is not given', () => {
-    const { observer, subscribe, unsubscribe } = createObserverPublisher()
-    expect(observer).toEqual({})
-    expect(typeof subscribe).toBe('function')
-    expect(typeof unsubscribe).toBe('function')
+  it('should return empty publisher if Observer is not given', () => {
+    const publisher = createObserverPublisher()
+    expect(publisher).toEqual(emptyPublisher)
   })
 
   it('should publish changes to subscribers', () => {
@@ -121,6 +119,14 @@ describe('Publish changes to the subscribers', () => {
         ...triggerRecord,
       })
     })
+  })
+
+  it('should not publish to subscriber if not subscribed', () => {
+    const { observer } = createObserverPublisher(MockObserver)
+
+    const element = { div: 'div' }
+
+    observer.triggerChangesFor([element])
   })
 
   it('should not subscribe same element twice', () => {
