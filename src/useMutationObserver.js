@@ -1,7 +1,6 @@
+import window from 'global/window'
 import useObserver from './useObserver'
 
-const { MutationObserver } = (window || {})
-
 export default function useMutationObserver(subscribeOptions) {
-  return useObserver(MutationObserver, { subscribeOptions })
+  return useObserver(window.MutationObserver, { subscribeOptions })
 }

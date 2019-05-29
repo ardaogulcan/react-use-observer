@@ -1,18 +1,16 @@
+export const emptyPublisher = {
+  observer: {},
+  subscribe: /* istanbul ignore next */ () => undefined,
+  unsubscribe: /* istanbul ignore next */ () => undefined,
+}
+
 export default function createObserverPublisher(Observer, options) {
   if (!Observer) {
-    return {
-      observer: {},
-      subscribe: () => undefined,
-      unsubscribe: () => undefined,
-    }
+    return emptyPublisher
   }
 
   const subscribers = new WeakMap()
   const observer = new Observer((entries) => {
-    if (!Array.isArray(entries) || !entries.length) {
-      return
-    }
-
     entries.forEach((entry) => {
       const { callback } = subscribers.get(entry.target) || {}
       if (!callback) {
