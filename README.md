@@ -8,9 +8,9 @@ Performant react hooks for WebApi Observers
 ## Features
 
 - Hooks for
-  - [ResizeObserver](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver)
-  - [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver)
-  - [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver)
+  - [ResizeObserver](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver) - useResizeObserver
+  - [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) - useMutationObserver
+  - [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver) - useIntersectionObserver
   - useObserver hook for additional WebApi Observers
 - Optimizes performance by re-using same Observers for same settings through the app
 - Supports three shaking
@@ -32,7 +32,7 @@ npm install --save react-use-observer
 
 ## Usage
 
-### useResizeObserver
+### useResizeObserver: [ResizeObserver](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver)
 
 #### Returns
 [ref: [React Ref](https://reactjs.org/docs/refs-and-the-dom.html), entry: [ResizeObserverEntry](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserverEntry)]
@@ -53,7 +53,7 @@ const App = () => {
 }
 ```
 
-### useIntersectionObserver
+### useIntersectionObserver: [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver)
 
 #### Parameters
 
@@ -91,7 +91,7 @@ const MyComp = () => {
 }
 ```
 
-### useMutationObserver
+### useMutationObserver: [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver)
 
 #### Parameters
 
@@ -177,6 +177,14 @@ const MyComp = () => {
   )
 }
 ```
+
+## All WebApi Observers
+
+- [ResizeObserver](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver)
+- [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver)
+- [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver)
+- [PerformanceObserver](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserver)
+- [ReportingObserver](https://developer.mozilla.org/en-US/docs/Web/API/ReportingObserver)
 
 ## License
 
