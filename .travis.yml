@@ -2,6 +2,6 @@ language: node_js
 node_js:
   - 8
 install:
-  - npm install codecov --global
+  - yarn && yarn global add codecov
 script:
-  npm run lint && npm run test && codecov
+  yarn lint && yarn test && codecov

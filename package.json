@@ -91,8 +91,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn test && yarn lint",
-      "prepare-commit-msg": "exec < /dev/tty && node_modules/.bin/git-cz --hook"
+      "pre-commit": "yarn test && yarn lint"
     }
   }
 }
