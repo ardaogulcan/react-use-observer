@@ -14,14 +14,16 @@ Performant react hooks for WebApi Observers
   - useObserver hook for additional WebApi Observers
 - Optimizes performance by re-using same Observers for same settings through the app
 - Supports three shaking
-- Includes pollyfills for
+
+
+Does not include pollyfills for `ResizeObserver` and `IntersectionObserver` if you need to support older browsers please include polyfills for them.
   - [ResizeObserver](https://github.com/que-etc/resize-observer-polyfill)
-  - [IntersectionObserver](https://github.com/que-etc/intersection-observer-polyfill)
+  - [IntersectionObserver](https://github.com/w3c/IntersectionObserver)
 
 ## Install
 
 ```bash
-yarn add react-use-observer
+npm install react-use-observer
 ```
 
 or

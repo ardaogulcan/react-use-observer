@@ -1,30 +1,18 @@
-import ResizeObserver from 'resize-observer-polyfill'
+import { useEffect } from 'react'
+import window from 'global/window'
 
 import useObserver from './useObserver'
 
 export default function useResizeObserver() {
-  return useObserver(ResizeObserver)
+  useEffect(() => {
+    const isResizeObserverAvailable = 'ResizeObserver' in window
+
+    if (!isResizeObserverAvailable) {
+      throw new Error(
+        'ResizeObserver is not available in this environment please consider using polyfill https://github.com/que-etc/resize-observer-polyfill',
+      )
+    }
+  }, [])
+
+  return useObserver(window.ResizeObserver)
 }
-
-// export default function useResizeObserverPlain() {
-//   const ref = useRef(null)
-//   const [entry, setEntry] = useState({})
-
-//   useEffect(() => {
-//     if (!publisher) {
-//       publisher = createObserverPublisher(ResizeObserver)
-//     }
-
-//     const element = ref.current
-//     if (!element) {
-//       return undefined
-//     }
-
-//     const { subscribe, unsubscribe } = publisher
-//     subscribe(element, newEntry => setEntry(newEntry))
-
-//     return () => unsubscribe(element)
-//   }, [])
-
-//   return [ref, entry]
-// }

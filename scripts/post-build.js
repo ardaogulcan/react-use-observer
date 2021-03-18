@@ -26,6 +26,7 @@ Promise.all([
   fs.copy('./LICENSE', './dist/LICENSE'),
   fs.copy('./README.md', './dist/README.md')
 ])
+  .then(() => console.log('Successfully executed post-build'))
   .catch((error) => {
     throw error
   })

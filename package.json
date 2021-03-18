@@ -82,8 +82,6 @@
   },
   "dependencies": {
     "global": "^4.3.2",
-    "intersection-observer-polyfill": "^0.1.0",
-    "resize-observer-polyfill": "^1.5.1",
     "use-deep-compare-effect": "^1.2.0"
   },
   "config": {

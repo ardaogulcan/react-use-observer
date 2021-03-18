@@ -1,13 +1,17 @@
-import useResizeObserver from './useResizeObserver'
+import { renderHook } from 'react-hooks-testing-library'
+import window from 'global/window'
 
+import useResizeObserver from './useResizeObserver'
 import useObserver from './useObserver'
 
-jest.mock('resize-observer-polyfill', () => 'ResizeObserver')
+jest.mock('global/window', () => ({
+  ResizeObserver: () => 'ResizeObserver',
+}))
 
 jest.mock('./useObserver')
 
 it('should call useObserver with ResizeObserver with no options', () => {
-  useResizeObserver()
+  renderHook(() => useResizeObserver())
 
-  expect(useObserver).toBeCalledWith('ResizeObserver')
+  expect(useObserver).toBeCalledWith(window.ResizeObserver)
 })

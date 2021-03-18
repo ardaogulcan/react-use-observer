@@ -12,7 +12,7 @@
     "prop-types": "^15.6.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-use-observer": "link:../dist"
+    "react-use-observer": "file:../dist"
   },
   "scripts": {
     "start": "start-storybook"
