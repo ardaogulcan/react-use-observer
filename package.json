@@ -1,6 +1,6 @@
 {
   "name": "react-use-observer",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Performant react hooks for WebApi Observers, useResizeObserver, useInteractionObserver, useMutationObserver",
   "author": "ardaogulcan",
   "license": "MIT",
