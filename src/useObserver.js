@@ -11,7 +11,7 @@ export default function useObserver(Observer, { observerOptions, subscribeOption
       // eslint-disable-next-line no-console
       console.error(
         'useObserver requires a valid WebAPI Observer as a first parameter',
-      );
+      )
     }
   }
 

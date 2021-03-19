@@ -12,7 +12,7 @@ jest.mock('global/window', () => ({
 jest.mock('./useObserver')
 
 it('should call useObserver with IntersectionObserver and observerOptions', () => {
-  renderHook(() => useIntersectionObserver({ test: 'test' }));
+  renderHook(() => useIntersectionObserver({ test: 'test' }))
 
   expect(useObserver).toBeCalledWith(window.IntersectionObserver, {
     observerOptions: {
