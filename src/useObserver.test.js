@@ -26,25 +26,27 @@ beforeEach(() => {
 it('should throw an error if no Observer given', () => {
   jest.spyOn(console, 'error').mockImplementation(() => { })
 
-  const { result } = renderHook(() => useObserver())
-
-  expect(result.error.message)
-    .toBe('useObserver requires a valid WebAPI Observer as a first parameter')
+  renderHook(() => useObserver())
 
   // eslint-disable-next-line no-console
-  expect(console.error)
-    .toHaveBeenCalledTimes(1)
+  expect(console.error).toBeCalledWith('useObserver requires a valid WebAPI Observer as a first parameter')
 
   // eslint-disable-next-line no-console
   console.error.mockRestore()
 })
 
 it('should not throw an error on production mode', () => {
+  jest.spyOn(console, 'error').mockImplementation(() => {})
   const env = process.env.NODE_ENV
   process.env.NODE_ENV = 'production'
 
   const { result } = renderHook(() => useObserver())
   expect(result.error).toBeUndefined()
+
+  // eslint-disable-next-line no-console
+  expect(console.error).not.toBeCalled()
+  // eslint-disable-next-line no-console
+  console.error.mockRestore()
 
   process.env.NODE_ENV = env
 })

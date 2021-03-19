@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react'
-import useDeepCompareEffect from 'use-deep-compare-effect'
+import useDeepCompareEffect from './helpers/useDeepCompareEffect'
 
 import createObserverPublisher from './helpers/createObserverPublisher'
 
@@ -8,7 +8,8 @@ let publishers
 export default function useObserver(Observer, { observerOptions, subscribeOptions } = {}) {
   if (process.env.NODE_ENV !== 'production') {
     if (!Observer) {
-      throw new Error(
+      // eslint-disable-next-line no-console
+      console.error(
         'useObserver requires a valid WebAPI Observer as a first parameter',
       )
     }

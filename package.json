@@ -81,8 +81,8 @@
     "standard-version": "^6.0.1"
   },
   "dependencies": {
-    "global": "^4.3.2",
-    "use-deep-compare-effect": "^1.2.0"
+    "fast-deep-equal": "^3.1.3",
+    "global": "^4.3.2"
   },
   "config": {
     "commitizen": {
