@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { renderHook } from 'react-hooks-testing-library'
 import { render, act } from 'react-testing-library'
 
@@ -159,4 +159,37 @@ it('should update entry for element on change', () => {
 
   expect(element1.textContent).toBe('test1')
   expect(element2.textContent).toBe('test2')
+})
+
+it('should work with async elements', () => {
+  jest.useFakeTimers()
+  const TestComp = () => {
+    const [ref] = useObserver(MockObserver)
+    const [visible, setVisible] = useState(false)
+    useEffect(() => {
+      // mimic async nature of data loading
+      setTimeout(() => {
+        setVisible(true)
+      }, 1000)
+    }, [])
+
+    return (
+      <div>
+        {visible && <div ref={ref} />}
+      </div>
+    )
+  }
+
+  const { unmount, container } = render(<TestComp />)
+
+  act(() => {
+    jest.runAllTimers()
+  })
+
+  const element = container.firstChild.firstChild
+
+  expect(mockObserve).toBeCalledWith(element, undefined)
+  unmount()
+  expect(mockUnobserve).toBeCalledWith(element)
+  jest.useRealTimers()
 })
