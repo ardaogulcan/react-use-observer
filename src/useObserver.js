@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useState, useCallback } from 'react'
 import useDeepCompareEffect from './helpers/useDeepCompareEffect'
 
 import createObserverPublisher from './helpers/createObserverPublisher'
@@ -15,8 +15,14 @@ export default function useObserver(Observer, { observerOptions, subscribeOption
     }
   }
 
-  const ref = useRef(null)
   const [entry, setEntry] = useState({})
+  const [element, setElement] = useState()
+
+  const ref = useCallback((node) => {
+    if (node !== null) {
+      setElement(node)
+    }
+  }, [])
 
   useDeepCompareEffect(() => {
     if (!publishers) {
@@ -37,8 +43,6 @@ export default function useObserver(Observer, { observerOptions, subscribeOption
       options.set(optionId, publisher)
     }
 
-    const element = ref.current
-
     if (!element) {
       return undefined
     }
@@ -47,7 +51,7 @@ export default function useObserver(Observer, { observerOptions, subscribeOption
     subscribe({ element, options: subscribeOptions }, newEntry => setEntry(newEntry))
 
     return () => unsubscribe(element)
-  }, [Observer, observerOptions, subscribeOptions])
+  }, [element, Observer, observerOptions, subscribeOptions])
 
   return [ref, entry]
 }
