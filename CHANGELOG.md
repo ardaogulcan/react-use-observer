@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.2.2](https://github.com/ardaogulcan/react-use-observer/compare/v2.2.0...v2.2.2) (2021-07-06)
+
+
+### Bug Fixes
+
+* Peer dependency versions for react and react-dom ([9bd8155](https://github.com/ardaogulcan/react-use-observer/commit/9bd8155))
+
+
+
 ### [2.2.1](https://github.com/ardaogulcan/react-use-observer/compare/v2.2.0...v2.2.1) (2021-05-24)
 
 
