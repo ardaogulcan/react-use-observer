@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.2.3](https://github.com/ardaogulcan/react-use-observer/compare/v2.2.2...v2.2.3) (2021-12-09)
+
+
+### Bug Fixes
+
+* remove observer check from hook ([21353e8](https://github.com/ardaogulcan/react-use-observer/commit/21353e8))
+
+
+
 ### [2.2.2](https://github.com/ardaogulcan/react-use-observer/compare/v2.2.0...v2.2.2) (2021-07-06)
 
 
