@@ -6,15 +6,6 @@ import createObserverPublisher from './helpers/createObserverPublisher'
 let publishers
 
 export default function useObserver(Observer, { observerOptions, subscribeOptions } = {}) {
-  if (process.env.NODE_ENV !== 'production') {
-    if (!Observer) {
-      // eslint-disable-next-line no-console
-      console.error(
-        'useObserver requires a valid WebAPI Observer as a first parameter',
-      )
-    }
-  }
-
   const [entry, setEntry] = useState({})
   const [element, setElement] = useState()
 
