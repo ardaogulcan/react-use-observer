@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { renderHook } from 'react-hooks-testing-library'
 import { render, act } from 'react-testing-library'
 
 const mockObserve = jest.fn()
@@ -23,19 +22,39 @@ beforeEach(() => {
   })
 })
 
+it('should not initialize observer if element ref is not provided', () => {
+  // eslint-disable-next-line react/prop-types
+  const ObservedComponent = ({ observer, options }) => {
+    useObserver(observer, options);
+
+    return <div />
+  };
+
+  render(<ObservedComponent observer={MockObserver} />);
+
+  expect(MockObserver).not.toBeCalled();
+});
+
 it('should create only one observer instance for same Observer and Options for all uses and rerenders', () => {
   const loopArr = [...Array(10)]
 
+  // eslint-disable-next-line react/prop-types
+  const ObservedComponent = ({ observer, options }) => {
+    const [ref] = useObserver(observer, options);
+
+    return <div ref={ref} />
+  };
+
   loopArr.forEach(() => {
-    renderHook(() => useObserver(MockObserver))
-    renderHook(() => useObserver(MockObserver, { observerOptions: { test: 'test' } }))
-    renderHook(() => useObserver(MockObserver, { observerOptions: { test: 'test2' } }))
-    renderHook(() => useObserver(MockObserver, { observerOptions: { test: 'test' }, subscribeOptions: { test: 'test' } }))
+    render(<ObservedComponent observer={MockObserver} />)
+    render(<ObservedComponent observer={MockObserver} options={{ observerOptions: { test: 'test' } }} />)
+    render(<ObservedComponent observer={MockObserver} options={{ observerOptions: { test: 'test2' } }} />)
+    render(<ObservedComponent observer={MockObserver} options={{ observerOptions: { test: 'test' }, subscribeOptions: { test: 'test' } }} />)
   })
 
-  const { rerender } = renderHook(() => useObserver(MockObserver))
-  const { rerender: rerender2 } = renderHook(() => useObserver(MockObserver, { observerOptions: { test: 'test' } }))
-  const { rerender: rerender3 } = renderHook(() => useObserver(MockObserver, { observerOptions: { test: 'test2' } }))
+  const { rerender } = render(<ObservedComponent observer={MockObserver} />);
+  const { rerender: rerender2 } = render(<ObservedComponent observer={MockObserver} options={{ observerOptions: { test: 'test' } }} />)
+  const { rerender: rerender3 } = render(<ObservedComponent observer={MockObserver} options={{ observerOptions: { test: 'test2' } }} />)
 
   loopArr.forEach(() => {
     rerender()

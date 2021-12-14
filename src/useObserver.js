@@ -16,6 +16,10 @@ export default function useObserver(Observer, { observerOptions, subscribeOption
   }, [])
 
   useDeepCompareEffect(() => {
+    if (!element || !Observer) {
+      return undefined;
+    }
+
     if (!publishers) {
       publishers = new Map()
     }
@@ -32,10 +36,6 @@ export default function useObserver(Observer, { observerOptions, subscribeOption
     if (!publisher) {
       publisher = createObserverPublisher(Observer, observerOptions)
       options.set(optionId, publisher)
-    }
-
-    if (!element) {
-      return undefined
     }
 
     const { subscribe, unsubscribe } = publisher
