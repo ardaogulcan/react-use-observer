@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.2.4](https://github.com/ardaogulcan/react-use-observer/compare/v2.2.3...v2.2.4) (2021-12-14)
+
+
+### Bug Fixes
+
+* **useObserver:** do not initialize observer if element or observer is not defined ([1b04e63](https://github.com/ardaogulcan/react-use-observer/commit/1b04e63))
+
+
+
 ### [2.2.3](https://github.com/ardaogulcan/react-use-observer/compare/v2.2.2...v2.2.3) (2021-12-09)
 
 
